@@ -91,9 +91,7 @@ void scan(int requests[], int headPosition, char* headDirection) {
 			break;
 		}
 	}
-	//for (i = 0; i < 20; i++)
-		//	printf("%d,", requessts[i]);
-	//printf("r: %d, l: %d\n", rightIndex, leftIndex);
+	
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
 		for (i = leftIndex; i > 0; i--)
@@ -113,10 +111,39 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	printf("SCAN - Total head movements = %d\n", totalHeadMovements);
 }
 
-void cscan(int requests[]) {
-	printf("C-SCAN DISK SCHEDULING ALGORITHM:\n");
+void cscan(int requests[], int headPosition, char* headDirection) {
+	printf("\nC-SCAN DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
+	int rightIndex;
+	int leftIndex;
+	int i;
+	
+	for (i = 1; i < TOTAL_REQUESTS; i++) {
+		if (requests[i] <= headPosition && headPosition < requests[i+1]) {
+			leftIndex = i;
+			rightIndex = i+1;
+			break;
+		}
+	}
+	//for (i = 0; i < 20; i++)
+		//printf("%d,", requests[i]);
+	//printf("r: %d, l: %d\n", rightIndex, leftIndex);
+	if (strcmp(headDirection, "LEFT") == 0) {
+		totalHeadMovements = abs(headPosition-0) + 299 + abs(299-requests[rightIndex]);
+		for (i = leftIndex; i >= 0; i--)
+			printf("%d, ", requests[i]);
+		for (i = TOTAL_REQUESTS-1; i > rightIndex; i--) 
+			printf("%d, ", requests[i]);
+		printf("%d\n", requests[rightIndex]);
+	} else {
+		totalHeadMovements = abs(headPosition-299) + 299 + abs(0-requests[leftIndex]);
+		for (i = rightIndex; i < TOTAL_REQUESTS; i++)
+			printf("%d, ", requests[i]);
+		for (i = 0; i < leftIndex; i++)
+			printf("%d, ", requests[i]);
+		printf("%d\n", requests[leftIndex]);
+	}
 	
 	printf("C-SCAN - Total head movements = %d\n", totalHeadMovements);
 }
@@ -125,6 +152,17 @@ void look(int requests[]) {
 	printf("LOOK DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
+	int rightIndex;
+	int leftIndex;
+	int i;
+	
+	for (i = 1; i < TOTAL_REQUESTS; i++) {
+		if (requests[i] <= headPosition && headPosition < requests[i+1]) {
+			leftIndex = i;
+			rightIndex = i+1;
+			break;
+		}
+	}
 	
 	printf("LOOK - Total head movements = %d\n", totalHeadMovements);
 }
@@ -133,6 +171,17 @@ void clook(int requests[]) {
 	printf("C-LOOK DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
+	int rightIndex;
+	int leftIndex;
+	int i;
+	
+	for (i = 1; i < TOTAL_REQUESTS; i++) {
+		if (requests[i] <= headPosition && headPosition < requests[i+1]) {
+			leftIndex = i;
+			rightIndex = i+1;
+			break;
+		}
+	}
 	
 	printf("C-LOOK - Total head movements = %d\n", totalHeadMovements);
 }
@@ -174,7 +223,7 @@ int main(int argc, char *argv[]) {
 	fcfs(requests, headPosition);
 	sstf(requests, headPosition);
 	scan(sortedRequests, headPosition, headDirection);
-	cscan(sortedRequests);
+	cscan(sortedRequests, headPosition, headDirection);
 	look(sortedRequests);
 	clook(sortedRequests);
 
