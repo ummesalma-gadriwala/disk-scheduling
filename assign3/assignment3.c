@@ -85,15 +85,25 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	for (i = 1; i < TOTAL_REQUESTS; i++) {
-		if (requests[i] <= headPosition && headPosition < requests[i+1]) {
+		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
 			leftIndex = i;
 			rightIndex = i+1;
 			break;
 		}
 	}
 	
+	for (i = 0; i < 20; i++)
+		printf("%d,", requests[i]);
+	
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
+		// grant the request I'm at first!
+		printf("%d %d\n", requests[leftIndex], headPosition);
+		if (requests[rightIndex] == headPosition) {
+			leftIndex += 1;
+			rightIndex += 1;
+		}
+		printf("r: %d, l: %d\n",rightIndex, leftIndex); 
 		for (i = leftIndex; i > 0; i--)
 			printf("%d, ", requests[i]);
 		for (i = rightIndex; i < TOTAL_REQUESTS-1; i++) 
@@ -126,8 +136,8 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 			break;
 		}
 	}
-	//for (i = 0; i < 20; i++)
-		//printf("%d,", requests[i]);
+	for (i = 0; i < 20; i++)
+		printf("%d,", requests[i]);
 	//printf("r: %d, l: %d\n", rightIndex, leftIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition-0) + 299 + abs(299-requests[rightIndex]);
@@ -148,7 +158,7 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 	printf("C-SCAN - Total head movements = %d\n", totalHeadMovements);
 }
 
-void look(int requests[]) {
+void look(int requests[], int headPosition, char* headDirection) {
 	printf("LOOK DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
@@ -167,7 +177,7 @@ void look(int requests[]) {
 	printf("LOOK - Total head movements = %d\n", totalHeadMovements);
 }
 
-void clook(int requests[]) {
+void clook(int requests[], int headPosition, char* headDirection) {
 	printf("C-LOOK DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
@@ -220,12 +230,12 @@ int main(int argc, char *argv[]) {
 	printf("Initial Head Position: %d\n", headPosition);
 	printf("Direction of Head: %s\n", headDirection);
 	
-	fcfs(requests, headPosition);
-	sstf(requests, headPosition);
+	//fcfs(requests, headPosition);
+	//sstf(requests, headPosition);
 	scan(sortedRequests, headPosition, headDirection);
-	cscan(sortedRequests, headPosition, headDirection);
-	look(sortedRequests);
-	clook(sortedRequests);
+	//cscan(sortedRequests, headPosition, headDirection);
+	//look(sortedRequests, headPosition, headDirection);
+	//clook(sortedRequests, headPosition, headDirection);
 
 	munmap(mmapfptr, MEMORY_SIZE);
 	return 0;
