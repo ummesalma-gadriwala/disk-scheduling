@@ -69,8 +69,6 @@ void sstf(int requests[], int headPosition) {
 		copy[requestIndex] = copy[TOTAL_REQUESTS-count-1];
 		copy[TOTAL_REQUESTS-count-1] = closestRequest;
 		printf("%d, ", currentPosition);
-		//for (i = 0; i < 20; i++)
-			//printf("%d,", copy[i]);
 		count++;
 	}
 	printf("%d\n", copy[0]);
@@ -82,11 +80,35 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	printf("SCAN DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
+	int rightIndex;
+	int leftIndex;
+	int i;
 	
+	for (i = 1; i < TOTAL_REQUESTS; i++) {
+		if (requests[i] <= headPosition && headPosition < requests[i+1]) {
+			leftIndex = i;
+			rightIndex = i+1;
+			break;
+		}
+	}
+	//for (i = 0; i < 20; i++)
+		//	printf("%d,", requessts[i]);
+	//printf("r: %d, l: %d\n", rightIndex, leftIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
+		for (i = leftIndex; i > 0; i--)
+			printf("%d, ", requests[i]);
+		for (i = rightIndex; i < TOTAL_REQUESTS-1; i++) 
+			printf("%d, ", requests[i]);
+		printf("%d\n", requests[TOTAL_REQUESTS-1]);
 	} else {
 		totalHeadMovements = abs(299 - headPosition) + abs(299 - requests[0]);
+		for (i = rightIndex; i < TOTAL_REQUESTS; i++)
+			printf("%d, ", requests[i]);
+		for (i = leftIndex; i > 0; i--)
+			printf("%d, ", requests[i]);
+		printf("%d\n", requests[0]);
+		
 	}
 	printf("SCAN - Total head movements = %d\n", totalHeadMovements);
 }
