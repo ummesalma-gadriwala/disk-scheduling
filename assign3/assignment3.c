@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
 #include <sys/mman.h> /*for mmap() function*/
 #include <string.h> /*for memcpy function*/
 #include <fcntl.h> /*for file descriptors*/
@@ -77,11 +78,16 @@ void sstf(int requests[], int headPosition) {
 	printf("SSTF - Total head movements = %d\n", totalHeadMovements);
 }
 
-void scan(int requests[]) {
+void scan(int requests[], int headPosition, char* headDirection) {
 	printf("SCAN DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
 	
+	if (strcmp(headDirection, "LEFT") == 0) {
+		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
+	} else {
+		totalHeadMovements = abs(299 - headPosition) + abs(299 - requests[0]);
+	}
 	printf("SCAN - Total head movements = %d\n", totalHeadMovements);
 }
 
@@ -145,7 +151,7 @@ int main(int argc, char *argv[]) {
 	
 	fcfs(requests, headPosition);
 	sstf(requests, headPosition);
-	scan(sortedRequests);
+	scan(sortedRequests, headPosition, headDirection);
 	cscan(sortedRequests);
 	look(sortedRequests);
 	clook(sortedRequests);
