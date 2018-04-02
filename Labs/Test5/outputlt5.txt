@@ -1,0 +1,41 @@
+File Attributes for the File/Directory: 'lt5'
+--------------------------------------------
+ Inode: 1874
+ Size(in bytes): 4096
+ Blocks: 8
+ File Permissions: 	drwxr-xr-x
+ Uid: 1000
+ Time of last access: 1522687508
+ Time of last data modification: 1522687469
+ Last Status Change time: 1522687469
+
+
+Files/Directories in 'lt5'
+-------------------------------------------------
+
+print ent-dname=file2.txt
+
+File Attributes for the File/Directory: 'lt5/file2.txt'
+--------------------------------------------
+ Inode: 1325
+ Size(in bytes): 15
+ Blocks: 8
+ File Permissions: 	-rw-r--r--
+ Uid: 1000
+ Time of last access: 1522687245
+ Time of last data modification: 1522686480
+ Last Status Change time: 1522686480
+
+print ent-dname=file1.txt
+
+File Attributes for the File/Directory: 'lt5/file1.txt'
+--------------------------------------------
+ Inode: 1875
+ Size(in bytes): 15
+ Blocks: 8
+ File Permissions: 	-rw-rw-r--
+ Uid: 1000
+ Time of last access: 1522687245
+ Time of last data modification: 1522686461
+ Last Status Change time: 1522686529
+
