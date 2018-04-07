@@ -25,6 +25,11 @@ void sort(int requests[]) {
 		}
 		requests[j+1] = k;
 	}
+	for (i = 0; i < 20; i++) {
+		printf("%d,", requests[i]);
+	}
+	printf("\n");
+
 }
 
 // fcfs algorithm, prints order of requests and total head movements
@@ -84,14 +89,23 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	int leftIndex;
 	int i;
 	
-	for (i = 1; i < TOTAL_REQUESTS; i++) {
+	if (headPosition <= requests[0]) {
+		return;
+	}
+	
+	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		return;
+	}
+	
+	for (i = 0; i < TOTAL_REQUESTS-1; i++) {
+		printf("%d ", i);
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
 			leftIndex = i;
 			rightIndex = i+1;
 			break;
 		}
 	}
-	
+	printf("\nl %d, r %d\n", leftIndex, rightIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
 		// grant the request I'm at first!
@@ -104,6 +118,7 @@ void scan(int requests[], int headPosition, char* headDirection) {
 		for (i = rightIndex; i < TOTAL_REQUESTS-1; i++) 
 			printf("%d, ", requests[i]);
 		printf("%d\n", requests[TOTAL_REQUESTS-1]);
+		return;
 	} else {
 		totalHeadMovements = abs(299 - headPosition) + abs(299 - requests[0]);
 		for (i = rightIndex; i < TOTAL_REQUESTS; i++)
@@ -123,6 +138,14 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 	int rightIndex;
 	int leftIndex;
 	int i;
+	
+	if (headPosition <= requests[0]) {
+		return;
+	}
+	
+	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		return;
+	}
 	
 	for (i = 1; i < TOTAL_REQUESTS; i++) {
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
@@ -164,6 +187,14 @@ void look(int requests[], int headPosition, char* headDirection) {
 	int leftIndex;
 	int i;
 	
+	if (headPosition <= requests[0]) {
+		return;
+	}
+	
+	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		return;
+	}
+	
 	for (i = 1; i < TOTAL_REQUESTS; i++) {
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
 			leftIndex = i;
@@ -204,6 +235,14 @@ void clook(int requests[], int headPosition, char* headDirection) {
 	int rightIndex;
 	int leftIndex;
 	int i;
+	
+	if (headPosition <= requests[0]) {
+		return;
+	}
+	
+	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		return;
+	}
 	
 	for (i = 1; i < TOTAL_REQUESTS; i++) {
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
@@ -276,12 +315,12 @@ int main(int argc, char *argv[]) {
 	printf("Initial Head Position: %d\n", headPosition);
 	printf("Direction of Head: %s\n", headDirection);
 	
-	fcfs(requests, headPosition);
+	//fcfs(requests, headPosition);
 	sstf(requests, headPosition);
-	scan(sortedRequests, headPosition, headDirection);
-	cscan(sortedRequests, headPosition, headDirection);
-	look(sortedRequests, headPosition, headDirection);
-	clook(sortedRequests, headPosition, headDirection);
+	//scan(sortedRequests, headPosition, headDirection);
+	//cscan(sortedRequests, headPosition, headDirection);
+	//look(sortedRequests, headPosition, headDirection);
+	//clook(sortedRequests, headPosition, headDirection);
 
 	munmap(mmapfptr, MEMORY_SIZE);
 	return 0;
