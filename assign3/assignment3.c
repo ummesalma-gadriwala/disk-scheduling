@@ -315,12 +315,12 @@ int main(int argc, char *argv[]) {
 	printf("Initial Head Position: %d\n", headPosition);
 	printf("Direction of Head: %s\n", headDirection);
 	
-	//fcfs(requests, headPosition);
+	fcfs(requests, headPosition);
 	sstf(requests, headPosition);
-	//scan(sortedRequests, headPosition, headDirection);
-	//cscan(sortedRequests, headPosition, headDirection);
-	//look(sortedRequests, headPosition, headDirection);
-	//clook(sortedRequests, headPosition, headDirection);
+	scan(sortedRequests, headPosition, headDirection);
+	cscan(sortedRequests, headPosition, headDirection);
+	look(sortedRequests, headPosition, headDirection);
+	clook(sortedRequests, headPosition, headDirection);
 
 	munmap(mmapfptr, MEMORY_SIZE);
 	return 0;
