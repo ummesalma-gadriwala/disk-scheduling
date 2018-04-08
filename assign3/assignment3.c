@@ -85,12 +85,14 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	printf("SCAN DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
-	int rightIndex;
-	int leftIndex;
+	int rightIndex = -5;
+	int leftIndex = -5;
 	int i;
-	
-	if (headPosition <= requests[0]) {
+
+/*	
+	if (headPosition < requests[0]) {
 		//YOUR CODE
+//head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
 		return;
 	}
 	
@@ -98,16 +100,27 @@ void scan(int requests[], int headPosition, char* headDirection) {
 		//YOUR CODE
 		return;
 	}
+*/
 	
 	for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-		printf("%d ", i);
+		//printf("%d ", i);
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
 			leftIndex = i;
 			rightIndex = i+1;
 			break;
 		}
 	}
-	printf("\nl %d, r %d\n", leftIndex, rightIndex);
+	if (leftIndex == -5 || rightIndex == -5){
+		if (headPosition <= requests[0]){
+			leftIndex = 0;
+			rightIndex = 0;
+		}
+		if (headPosition >= requests[TOTAL_REQUESTS-1]){
+			leftIndex = requests[TOTAL_REQUESTS-1];
+			rightIndex = requests[TOTAL_REQUESTS-1];
+		}
+	}
+	//printf("\nl %d, r %d\n", leftIndex, rightIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
 		// grant the request I'm at first!
@@ -322,12 +335,12 @@ int main(int argc, char *argv[]) {
 	printf("Initial Head Position: %d\n", headPosition);
 	printf("Direction of Head: %s\n", headDirection);
 	
-	fcfs(requests, headPosition);
-	sstf(requests, headPosition);
+	//fcfs(requests, headPosition);
+	//sstf(requests, headPosition);
 	scan(sortedRequests, headPosition, headDirection);
-	cscan(sortedRequests, headPosition, headDirection);
-	look(sortedRequests, headPosition, headDirection);
-	clook(sortedRequests, headPosition, headDirection);
+	//cscan(sortedRequests, headPosition, headDirection);
+	//look(sortedRequests, headPosition, headDirection);
+	//clook(sortedRequests, headPosition, headDirection);
 
 	munmap(mmapfptr, MEMORY_SIZE);
 	return 0;
