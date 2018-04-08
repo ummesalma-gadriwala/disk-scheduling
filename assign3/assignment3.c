@@ -25,11 +25,6 @@ void sort(int requests[]) {
 		}
 		requests[j+1] = k;
 	}
-	for (i = 0; i < 20; i++) {
-		printf("%d,", requests[i]);
-	}
-	printf("\n");
-
 }
 
 // fcfs algorithm, prints order of requests and total head movements
@@ -91,8 +86,6 @@ void scan(int requests[], int headPosition, char* headDirection) {
 
 
 	if (headPosition <= requests[0]) {
-		//YOUR CODE
-//head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
 		if (strcmp(headDirection,"LEFT") == 0){
 			totalHeadMovements = abs(requests[TOTAL_REQUESTS -1] + headPosition);
 		}else{
@@ -107,16 +100,13 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
-		//YOUR CODE
-		
 		if (strcmp(headDirection,"LEFT") == 0){
 			totalHeadMovements = abs(headPosition - requests[0]);
-		}else{
+		} else {
 			totalHeadMovements = abs(299 - headPosition) + abs(299 - requests[0]);
 		}
-		for (i = TOTAL_REQUESTS-1; i > 0; i--) {
+		for (i = TOTAL_REQUESTS-1; i > 0; i--)
 			printf("%d, ", requests[i]);
-		}
 		printf("%d\n", requests[0]);
 		printf("SCAN - Total head movements = %d\n", totalHeadMovements);
 		return;
@@ -124,7 +114,6 @@ void scan(int requests[], int headPosition, char* headDirection) {
 
 	
 	for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-		//printf("%d ", i);
 		if (requests[i] <= headPosition && headPosition <= requests[i+1]) {
 			leftIndex = i;
 			rightIndex = i+1;
@@ -132,7 +121,6 @@ void scan(int requests[], int headPosition, char* headDirection) {
 		}
 	}
 
-	//printf("l %d, r %d\n", leftIndex, rightIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
 		// grant the request I'm at first!
@@ -166,29 +154,24 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
-		//YOUR CODE
-//head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
 		if (strcmp(headDirection,"LEFT") == 0){
 			totalHeadMovements = abs (headPosition - 0) + abs(299 - requests[0]) + 299;
-			if(headPosition == requests[0]){
+			if(headPosition == requests[0]) {
 				printf("%d,", requests[0]);
 				for (i = TOTAL_REQUESTS-1; i > 1; i--) {
-				printf("%d, ", requests[i]);
-			
+					printf("%d, ", requests[i]);
 				}
 				printf("%d\n", requests[1]);
-			}else{
-				for (i = TOTAL_REQUESTS-1; i > 0; i--) {
-				printf("%d, ", requests[i]);
-			
-			}
+			} else {
+				for (i = TOTAL_REQUESTS-1; i > 0; i--)
+					printf("%d, ", requests[i]);
 				printf("%d\n", requests[0]);
 			}
 			
-		}else{
+		} else {
 			totalHeadMovements = abs(requests[TOTAL_REQUESTS -1] - headPosition);
 			for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-			printf("%d, ", requests[i]);
+				printf("%d, ", requests[i]);
 			}
 			printf("%d\n", requests[TOTAL_REQUESTS-1]);
 		
@@ -198,25 +181,23 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
-		//YOUR CODE
-		
 		if (strcmp(headDirection,"LEFT") == 0){
 			totalHeadMovements = abs(headPosition - requests[0]);
 			for (i = TOTAL_REQUESTS-1; i > 0; i--) {
-			printf("%d, ", requests[i]);
+				printf("%d, ", requests[i]);
 			}
 			printf("%d\n", requests[0]);
-		}else{
+		} else {
 			totalHeadMovements = abs(299 - headPosition) + abs(0 - requests[TOTAL_REQUESTS-1]) + 299;
 			if (headPosition == requests[TOTAL_REQUESTS-1]){
 				printf("%d,", requests[TOTAL_REQUESTS-1]);
 				for (i = 0; i < TOTAL_REQUESTS-2; i++) {
-				printf("%d, ", requests[i]);
+					printf("%d, ", requests[i]);
 				}
 				printf("%d\n,", requests[TOTAL_REQUESTS-2]);
-			}else{
+			} else {
 				for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-				printf("%d, ", requests[i]);
+					printf("%d, ", requests[i]);
 				}
 				printf("%d\n", requests[TOTAL_REQUESTS-1]);
 			}
@@ -266,8 +247,6 @@ void look(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
-		//YOUR CODE
-//head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
 		totalHeadMovements = abs(requests[TOTAL_REQUESTS -1] - headPosition);
 		for (i = 0; i < TOTAL_REQUESTS-1; i++) {
 			printf("%d, ", requests[i]);
@@ -278,8 +257,6 @@ void look(int requests[], int headPosition, char* headDirection) {
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
-		//YOUR CODE
-		
 		totalHeadMovements = abs(headPosition - requests[0]);
 		
 		for (i = TOTAL_REQUESTS-1; i > 0; i--) {
@@ -332,10 +309,8 @@ void clook(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
-		//YOUR CODE
-//head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
-		if (strcmp(headDirection,"LEFT") == 0){
-			totalHeadMovements = abs (headPosition - requests[TOTAL-REQUESTS-1]) + abs(requests[TOTAL-REQUESTS-1] - requests[0]);
+		if (strcmp(headDirection,"LEFT") == 0) {
+			totalHeadMovements = abs (headPosition - requests[TOTAL_REQUESTS-1]) + abs(requests[TOTAL_REQUESTS-1] - requests[0]);
 			if(headPosition == requests[0]){
 				printf("%d,", requests[0]);
 				for (i = TOTAL_REQUESTS-1; i > 1; i--) {
@@ -343,18 +318,17 @@ void clook(int requests[], int headPosition, char* headDirection) {
 			
 				}
 				printf("%d\n", requests[1]);
-			}else{
+			} else {
 				for (i = TOTAL_REQUESTS-1; i > 0; i--) {
-				printf("%d, ", requests[i]);
-			
+					printf("%d, ", requests[i]);
 			}
 				printf("%d\n", requests[0]);
 			}
 			
-		}else{
+		} else {
 			totalHeadMovements = abs(requests[TOTAL_REQUESTS -1] - headPosition);
 			for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-			printf("%d, ", requests[i]);
+				printf("%d, ", requests[i]);
 			}
 			printf("%d\n", requests[TOTAL_REQUESTS-1]);
 		
@@ -364,25 +338,23 @@ void clook(int requests[], int headPosition, char* headDirection) {
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
-		//YOUR CODE
-		
 		if (strcmp(headDirection,"LEFT") == 0){
 			totalHeadMovements = abs(headPosition - requests[0]);
 			for (i = TOTAL_REQUESTS-1; i > 0; i--) {
-			printf("%d, ", requests[i]);
+				printf("%d, ", requests[i]);
 			}
 			printf("%d\n", requests[0]);
-		}else{
-			totalHeadMovements = abs (headPosition - requests[0]) + abs(requests[TOTAL-REQUESTS-1] - requests[0]);
+		} else {
+			totalHeadMovements = abs (headPosition - requests[0]) + abs(requests[TOTAL_REQUESTS-1] - requests[0]);
 			if (headPosition == requests[TOTAL_REQUESTS-1]){
 				printf("%d,", requests[TOTAL_REQUESTS-1]);
 				for (i = 0; i < TOTAL_REQUESTS-2; i++) {
-				printf("%d, ", requests[i]);
+					printf("%d, ", requests[i]);
 				}
 				printf("%d\n,", requests[TOTAL_REQUESTS-2]);
 			}else{
 				for (i = 0; i < TOTAL_REQUESTS-1; i++) {
-				printf("%d, ", requests[i]);
+					printf("%d, ", requests[i]);
 				}
 				printf("%d\n", requests[TOTAL_REQUESTS-1]);
 			}
