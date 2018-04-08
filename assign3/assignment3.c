@@ -85,11 +85,11 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	printf("SCAN DISK SCHEDULING ALGORITHM:\n");
 	
 	int totalHeadMovements = 0;
-	int rightIndex = -5;
-	int leftIndex = -5;
+	int rightIndex;
+	int leftIndex;
 	int i;
 
-/*	
+
 	if (headPosition < requests[0]) {
 		//YOUR CODE
 //head moves from 8 to 0, then from 0 to 293 printing all the requests i the way
@@ -100,7 +100,7 @@ void scan(int requests[], int headPosition, char* headDirection) {
 		//YOUR CODE
 		return;
 	}
-*/
+
 	
 	for (i = 0; i < TOTAL_REQUESTS-1; i++) {
 		//printf("%d ", i);
@@ -110,17 +110,8 @@ void scan(int requests[], int headPosition, char* headDirection) {
 			break;
 		}
 	}
-	if (leftIndex == -5 || rightIndex == -5){
-		if (headPosition <= requests[0]){
-			leftIndex = 0;
-			rightIndex = 0;
-		}
-		if (headPosition >= requests[TOTAL_REQUESTS-1]){
-			leftIndex = requests[TOTAL_REQUESTS-1];
-			rightIndex = requests[TOTAL_REQUESTS-1];
-		}
-	}
-	//printf("\nl %d, r %d\n", leftIndex, rightIndex);
+
+	//printf("l %d, r %d\n", leftIndex, rightIndex);
 	if (strcmp(headDirection, "LEFT") == 0) {
 		totalHeadMovements = abs(headPosition - 0) + abs(0 - requests[TOTAL_REQUESTS-1]);
 		// grant the request I'm at first!
