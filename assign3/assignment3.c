@@ -90,10 +90,12 @@ void scan(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
+		//YOUR CODE
 		return;
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		//YOUR CODE
 		return;
 	}
 	
@@ -139,10 +141,12 @@ void cscan(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
+		//YOUR CODE
 		return;
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		//YOUR CODE
 		return;
 	}
 	
@@ -187,10 +191,12 @@ void look(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
+		//YOUR CODE
 		return;
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		//YOUR CODE
 		return;
 	}
 	
@@ -236,10 +242,12 @@ void clook(int requests[], int headPosition, char* headDirection) {
 	int i;
 	
 	if (headPosition <= requests[0]) {
+		//YOUR CODE
 		return;
 	}
 	
 	if (headPosition >= requests[TOTAL_REQUESTS-1]) {
+		//YOUR CODE
 		return;
 	}
 	
