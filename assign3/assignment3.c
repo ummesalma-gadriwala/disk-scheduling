@@ -118,7 +118,6 @@ void scan(int requests[], int headPosition, char* headDirection) {
 		for (i = rightIndex; i < TOTAL_REQUESTS-1; i++) 
 			printf("%d, ", requests[i]);
 		printf("%d\n", requests[TOTAL_REQUESTS-1]);
-		return;
 	} else {
 		totalHeadMovements = abs(299 - headPosition) + abs(299 - requests[0]);
 		for (i = rightIndex; i < TOTAL_REQUESTS; i++)
