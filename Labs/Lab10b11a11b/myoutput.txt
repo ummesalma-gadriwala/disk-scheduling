@@ -1,34 +1,0 @@
-Script started on Thu 22 Mar 2018 10:55:44 AM MDT
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ g[Kgit pushcommit -m "Test  4"[A]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ [C[C[C[C[9Padd -A
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Plabtest4 gcc -o labtest4 labttest4.c [A]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ [10Plabtest4 
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -o labtest4 labttest4.c [A]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ [10Plabtest4 
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit add -Acommit -m "Test  4"[A]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ [C[C[C[Cpush[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kgcc -o lab10b11a11b  lab10b11a11b.
-lab10b11a11b.c    lab10b11a11b.pdf  
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ gcc -o lab10b11a11b  lab10b11a11b.c 
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ ./lab10b11a11b file11.txt 
-Printing file1.txt attributes:
- Inode: 619
- Size(in bytes): 14
- Blocks: 8
- File Permissions: 33204
- File Permissions: 	-rw-rw-r--
- Uid: 1000
- Time of last access: 1521734521
- Time of last data modification: 1521734521
- Last Status Change time: 1521737697
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ chmod ug+rw file1.txxt 
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ chmod o+r file1.txt  
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ stat file1.txt 
-  File: ‘file1.txt’
-  Size: 14        	Blocks: 8          IO Block: 4096   regular file
-Device: 801h/2049d	Inode: 619         Links: 1
-Access: (0664/-rw-rw-r--)  Uid: ( 1000/oscreader)   Gid: ( 1000/oscreader)
-Access: 2018-03-22 10:02:01.175003982 -0600
-Modify: 2018-03-22 10:02:01.179003982 -0600
-Change: 2018-03-22 10:56:41.795003982 -0600
- Birth: -
-]0;oscreader@OSC: ~/Desktop/operating-systems/Labs/Lab10b11a11boscreader@OSC:~/Desktop/operating-systems/Labs/Lab10b11a11b$ exit
-exit
-
-Script done on Thu 22 Mar 2018 10:56:50 AM MDT
