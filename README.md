@@ -11,6 +11,7 @@ Implements the following disk scheduling algorithms:
 - C-LOOK
 
 Compile: gcc -o disk-scheduling disk-scheduling.c
+
 Run: disk-scheduling 100 RIGHT
 
 Test Cases:
